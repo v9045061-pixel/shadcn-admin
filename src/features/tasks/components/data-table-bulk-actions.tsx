@@ -56,18 +56,7 @@ export function DataTableBulkActions<TData>({
     table.resetRowSelection()
   }
 
-  const handleBulkExport = () => {
-    const selectedTasks = selectedRows.map((row) => row.original as Task)
-    toast.promise(sleep(2000), {
-      loading: 'Exporting tasks...',
-      success: () => {
-        table.resetRowSelection()
-        return `Exported ${selectedTasks.length} task${selectedTasks.length > 1 ? 's' : ''} to CSV.`
-      },
-      error: 'Error',
-    })
-    table.resetRowSelection()
-  }
+  // ...existing code...
 
   return (
     <>
@@ -144,24 +133,7 @@ export function DataTableBulkActions<TData>({
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant='outline'
-              size='icon'
-              onClick={() => handleBulkExport()}
-              className='size-8'
-              aria-label='Export tasks'
-              title='Export tasks'
-            >
-              <Download />
-              <span className='sr-only'>Export tasks</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Export tasks</p>
-          </TooltipContent>
-        </Tooltip>
+        
 
         <Tooltip>
           <TooltipTrigger asChild>
