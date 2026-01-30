@@ -8,8 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Check, Settings as SettingsIcon, Save } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Settings() {
+  const { toast } = useToast();
   const { data: settings, isLoading } = useQuery<any>({
     queryKey: [api.settings.get.path],
   });
@@ -26,6 +28,10 @@ export default function Settings() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [api.settings.get.path] });
+      toast({
+        title: "Налаштування збережено",
+        description: "Ваші зміни успішно застосовані.",
+      });
     },
   });
 
@@ -77,9 +83,9 @@ export default function Settings() {
   if (isLoading) return null;
 
   return (
-    <div className="flex-1 overflow-hidden relative font-body text-white app-drag-region bg-black">
+    <div className="flex-1 overflow-hidden relative font-body text-white app-drag-region">
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-to-br from-[#9d00ff]/10 to-[#6b00ff]/6 rounded-full blur-[100px]" />
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
       </div>
 
       <main className="relative z-10 max-w-2xl mx-auto space-y-8 pl-4 md:pl-6 lg:pl-8 pr-0 h-full overflow-y-auto smooth-scroll custom-scrollbar" onClick={handleContainerClick}>
@@ -95,7 +101,7 @@ export default function Settings() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-black/30 backdrop-blur-lg border border-white/4 rounded-3xl p-8 space-y-6"
+            className="bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 space-y-6"
           >
             <h2 className="text-xl font-semibold">
               Telegram
@@ -106,14 +112,14 @@ export default function Settings() {
                   Кількість потоків
                 </Label>
                 <div className="text-xs text-zinc-500">
-                  Вкажіть кількість одночасно відкритих акаунтів
+                  Вкажіть кількість одночасних потоків для Telegram
                 </div>
                 <Input
                   id="telegramThreads"
                   type="number"
                   value={telegramThreads}
                   onChange={(e) => setTelegramThreads(e.target.value)}
-                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-[#9d00ff] focus:ring-2 focus:ring-[#9d00ff]/40 focus:outline-none transition-all pl-4"
+                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-primary/50 transition-all pl-4"
                 />
               </div>
 
@@ -122,13 +128,13 @@ export default function Settings() {
                   Шлях до папки з акаунтами
                 </Label>
                 <div className="text-xs text-zinc-500">
-                  Вкажіть повний шлях до папки з акаунтами
+                  Вкажіть повний шлях до папки з акаунтами Telegram
                 </div>
                 <Input
                   id="telegramFolderPath"
                   value={telegramFolderPath}
                   onChange={(e) => setTelegramFolderPath(e.target.value)}
-                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-[#9d00ff] focus:ring-2 focus:ring-[#9d00ff]/40 focus:outline-none transition-all pl-4"
+                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-primary/50 transition-all pl-4"
                   placeholder="C:\\Users\\Admin\\Documents\\TelegramAccounts"
                 />
               </div>
@@ -140,7 +146,7 @@ export default function Settings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-black/30 backdrop-blur-lg border border-white/4 rounded-3xl p-8 space-y-6"
+            className="bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 space-y-6"
           >
             <h2 className="text-xl font-semibold">
               Chrome
@@ -151,14 +157,14 @@ export default function Settings() {
                   Кількість потоків
                 </Label>
                 <div className="text-xs text-zinc-500">
-                  Вкажіть кількість одночасно відкритих акаунтів
+                  Вкажіть кількість одночасних потоків для Chrome
                 </div>
                 <Input
                   id="chromeThreads"
                   type="number"
                   value={chromeThreads}
                   onChange={(e) => setChromeThreads(e.target.value)}
-                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-[#9d00ff] focus:ring-2 focus:ring-[#9d00ff]/40 focus:outline-none transition-all pl-4"
+                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-primary/50 transition-all pl-4"
                 />
               </div>
 
@@ -167,13 +173,13 @@ export default function Settings() {
                   Шлях до папки з акаунтами
                 </Label>
                 <div className="text-xs text-zinc-500">
-                  Вкажіть повний шлях до папки з акаунтами
+                  Вкажіть повний шлях до папки з акаунтами Chrome
                 </div>
                 <Input
                   id="chromeFolderPath"
                   value={chromeFolderPath}
                   onChange={(e) => setChromeFolderPath(e.target.value)}
-                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-[#9d00ff] focus:ring-2 focus:ring-[#9d00ff]/40 focus:outline-none transition-all pl-4"
+                  className="bg-black/40 border-white/5 h-12 rounded-xl focus:border-primary/50 transition-all pl-4"
                   placeholder="C:\\Users\\Admin\\Documents\\ChromeAccounts"
                 />
               </div>
@@ -185,7 +191,7 @@ export default function Settings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex justify-end pt-8 pb-8 sticky bottom-0 backdrop-blur-sm rounded-t-2xl -ml-4 -mr-4 pl-4 pr-4 md:-ml-6 md:-mr-6 md:pl-6 md:pr-6 lg:-ml-8 lg:-mr-8 lg:pl-8 lg:pr-8"
+            className="flex justify-end pt-8 pb-8 sticky bottom-0 bg-black/80 backdrop-blur-sm rounded-t-2xl -ml-4 -mr-4 pl-4 pr-4 md:-ml-6 md:-mr-6 md:pl-6 md:pr-6 lg:-ml-8 lg:-mr-8 lg:pl-8 lg:pr-8"
           >
             <Button 
               onClick={handleSave}

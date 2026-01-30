@@ -64,13 +64,13 @@ export function Chats() {
   const users = conversations.map(({ messages, ...user }) => user)
 
   return (
-    <>
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <div className="flex-1 overflow-hidden relative font-body text-white bg-black w-full h-full">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-to-br from-[#9d00ff]/10 to-[#6b00ff]/6 rounded-full blur-[100px]" />
       </div>
 
       {/* ===== Top Heading ===== */}
-      <Header>
+      <Header className="relative z-10 bg-transparent">
         <Search />
         <div className='ms-auto flex items-center space-x-4'>
           <ThemeSwitch />
@@ -79,11 +79,11 @@ export function Chats() {
         </div>
       </Header>
 
-      <Main fixed>
+      <Main fixed className="relative z-10 bg-transparent">
         <section className='flex h-full gap-6'>
           {/* Left Side */}
           <div className='flex w-full flex-col gap-2 sm:w-56 lg:w-72 2xl:w-80'>
-            <div className='sticky top-0 z-10 -mx-4 bg-background px-4 pb-3 shadow-md sm:static sm:z-auto sm:mx-0 sm:p-0 sm:shadow-none'>
+            <div className='sticky top-0 z-10 -mx-4 bg-black px-4 pb-3 shadow-md sm:static sm:z-auto sm:mx-0 sm:p-0 sm:shadow-none'>
               <div className='flex items-center justify-between py-2'>
                 <div className='flex gap-2'>
                   <h1 className='text-2xl font-bold'>Inbox</h1>
@@ -166,12 +166,12 @@ export function Chats() {
           {selectedUser ? (
             <div
               className={cn(
-                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col border bg-background shadow-xs sm:static sm:z-auto sm:flex sm:rounded-md',
+                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col border bg-black shadow-xs sm:static sm:z-auto sm:flex sm:rounded-md',
                 mobileSelectedUser && 'start-0 flex'
               )}
             >
               {/* Top Part */}
-              <div className='mb-1 flex flex-none justify-between bg-card p-4 shadow-lg sm:rounded-t-md'>
+              <div className='mb-1 flex flex-none justify-between bg-black/40 p-4 shadow-lg sm:rounded-t-md'>
                 {/* Left */}
                 <div className='flex gap-3'>
                   <Button
@@ -264,7 +264,7 @@ export function Chats() {
                   </div>
                 </div>
                 <form className='flex w-full flex-none gap-2'>
-                  <div className='flex flex-1 items-center gap-2 rounded-md border border-input bg-card px-2 py-1 focus-within:ring-1 focus-within:ring-ring focus-within:outline-hidden lg:gap-4'>
+                  <div className='flex flex-1 items-center gap-2 rounded-md border border-input bg-black/40 px-2 py-1 focus-within:ring-1 focus-within:ring-ring focus-within:outline-hidden lg:gap-4'>
                     <div className='space-x-1'>
                       <Button
                         size='icon'
@@ -322,7 +322,7 @@ export function Chats() {
           ) : (
             <div
               className={cn(
-                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col justify-center rounded-md border bg-card shadow-xs sm:static sm:z-auto sm:flex'
+                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col justify-center rounded-md border bg-black/40 shadow-xs sm:static sm:z-auto sm:flex'
               )}
             >
               <div className='flex flex-col items-center space-y-6'>
@@ -348,6 +348,6 @@ export function Chats() {
           open={createConversationDialogOpened}
         />
       </Main>
-    </>
+    </div>
   )
 }

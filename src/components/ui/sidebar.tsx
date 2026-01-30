@@ -84,7 +84,7 @@ export function Sidebar() {
         "h-20 flex items-center justify-center border-b border-white/5 transition-all duration-300",
         isCollapsed ? "lg:justify-center" : "lg:justify-start lg:px-6"
       )}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#9d00ff] to-purple-900 flex items-center justify-center shadow-lg shadow-[#9d00ff]/20 overflow-hidden">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-purple-900 flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden">
           <LayoutGrid className="text-white w-6 h-6" />
         </div>
         <span className={cn(
@@ -105,7 +105,7 @@ export function Sidebar() {
             isCollapsed ? "justify-center" : "justify-center lg:justify-start",
             "gap-3",
             shouldHighlightFarmType && type === "telegram"
-              ? "bg-[#9d00ff]/10 text-[#9d00ff] hover:bg-[#9d00ff]/20 border border-[#9d00ff]/20" 
+              ? "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20" 
               : "text-muted-foreground hover:bg-white/5 hover:text-white"
           )}
         >
@@ -119,7 +119,7 @@ export function Sidebar() {
             Telegram
           </span>
           {shouldHighlightFarmType && type === "telegram" && (
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#9d00ff] rounded-r-full" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
           )}
         </Button>
         
@@ -131,7 +131,7 @@ export function Sidebar() {
             isCollapsed ? "justify-center" : "justify-center lg:justify-start",
             "gap-3",
             shouldHighlightFarmType && type === "chrome"
-              ? "bg-[#9d00ff]/10 text-[#9d00ff] hover:bg-[#9d00ff]/20 border border-[#9d00ff]/20" 
+              ? "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20" 
               : "text-muted-foreground hover:bg-white/5 hover:text-white"
           )}
         >
@@ -145,12 +145,12 @@ export function Sidebar() {
             Chrome
           </span>
           {shouldHighlightFarmType && type === "chrome" && (
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#9d00ff] rounded-r-full" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
           )}
         </Button>
       </div>
 
-          <div className={cn(
+      <div className={cn(
         "bg-white/5 transition-all duration-300",
         isCollapsed ? "mx-2" : "mx-4"
       )}>
@@ -172,9 +172,9 @@ export function Sidebar() {
           )}>
             <div className="flex items-center justify-center w-5 h-5">
               <item.icon className={cn(
-                  "w-5 h-5 transition-transform duration-300 group-hover:scale-110",
-                  location === item.href && "text-[#9d00ff]"
-                )} />
+                "w-5 h-5 transition-transform duration-300 group-hover:scale-110",
+                location === item.href && "text-primary"
+              )} />
             </div>
             <span className={cn(
               "font-medium transition-all duration-300",
@@ -184,7 +184,7 @@ export function Sidebar() {
             </span>
             
             {location === item.href && (
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#9d00ff] rounded-r-full" />
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
             )}
           </Link>
         ))}
