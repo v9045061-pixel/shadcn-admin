@@ -15,7 +15,7 @@ import { TeamSwitcher } from './team-switcher'
 export function AppSidebar() {
   const { collapsible, variant } = useLayout()
   return (
-    <Sidebar collapsible={collapsible} variant={variant}>
+    <Sidebar collapsible={collapsible} variant={variant} className="sidebar">
       <SidebarHeader>
         <TeamSwitcher teams={sidebarData.teams} />
 
@@ -23,7 +23,7 @@ export function AppSidebar() {
          /* if you want to use the normal app title instead of TeamSwitch dropdown */}
         {/* <AppTitle /> */}
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="sidebar">
         {sidebarData.navGroups.map((props) => (
           <NavGroup key={props.title} {...props} />
         ))}

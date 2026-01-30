@@ -70,9 +70,10 @@ function SidebarMenuLink({ item, href }: { item: NavLink; href: string }) {
         asChild
         isActive={checkIsActive(href, item)}
         tooltip={item.title}
+        className="icon-color"
       >
-        <Link to={item.url} onClick={() => setOpenMobile(false)}>
-          {item.icon && <item.icon />}
+        <Link to={item.url} onClick={() => setOpenMobile(false)} className="icon-color">
+          <item.icon style={{ color: 'red', fill: 'red' }} />
           <span>{item.title}</span>
           {item.badge && <NavBadge>{item.badge}</NavBadge>}
         </Link>
@@ -97,8 +98,8 @@ function SidebarMenuCollapsible({
     >
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
-          <SidebarMenuButton tooltip={item.title}>
-            {item.icon && <item.icon />}
+          <SidebarMenuButton tooltip={item.title} className="icon-color">
+            <item.icon style={{ color: 'red', fill: 'red' }} />
             <span>{item.title}</span>
             {item.badge && <NavBadge>{item.badge}</NavBadge>}
             <ChevronRight className='ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 rtl:rotate-180' />
@@ -112,8 +113,8 @@ function SidebarMenuCollapsible({
                   asChild
                   isActive={checkIsActive(href, subItem)}
                 >
-                  <Link to={subItem.url} onClick={() => setOpenMobile(false)}>
-                    {subItem.icon && <subItem.icon />}
+                  <Link to={subItem.url} onClick={() => setOpenMobile(false)} className="icon-color">
+                    <subItem.icon style={{ color: 'red', fill: 'red' }} />
                     <span>{subItem.title}</span>
                     {subItem.badge && <NavBadge>{subItem.badge}</NavBadge>}
                   </Link>
@@ -141,8 +142,9 @@ function SidebarMenuCollapsedDropdown({
           <SidebarMenuButton
             tooltip={item.title}
             isActive={checkIsActive(href, item)}
+            className="icon-color"
           >
-            {item.icon && <item.icon />}
+            <item.icon style={{ color: 'red', fill: 'red' }} />
             <span>{item.title}</span>
             {item.badge && <NavBadge>{item.badge}</NavBadge>}
             <ChevronRight className='ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
@@ -157,9 +159,9 @@ function SidebarMenuCollapsedDropdown({
             <DropdownMenuItem key={`${sub.title}-${sub.url}`} asChild>
               <Link
                 to={sub.url}
-                className={`${checkIsActive(href, sub) ? 'bg-secondary' : ''}`}
+                className={`icon-color ${checkIsActive(href, sub) ? 'bg-secondary' : ''}`}
               >
-                {sub.icon && <sub.icon />}
+                <sub.icon style={{ color: 'red', fill: 'red' }} />
                 <span className='max-w-52 text-wrap'>{sub.title}</span>
                 {sub.badge && (
                   <span className='ms-auto text-xs'>{sub.badge}</span>

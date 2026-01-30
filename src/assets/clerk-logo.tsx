@@ -10,7 +10,7 @@ export function ClerkLogo({ className, ...props }: SVGProps<SVGSVGElement>) {
       id='clerk'
       height='24'
       width='24'
-      className={cn('[&>path]:fill-foreground', className)}
+      className={cn('fill-current', className)}
       {...props}
     >
       <title>Clerk</title>

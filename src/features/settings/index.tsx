@@ -14,6 +14,11 @@ export default function Settings() {
   const { toast } = useToast();
   const { data: settings, isLoading } = useQuery<any>({
     queryKey: [api.settings.get.path],
+    queryFn: async () => {
+      const res = await fetch(api.settings.get.path);
+      if (!res.ok) throw new Error('Failed to fetch settings');
+      return res.json();
+    },
   });
 
   const mutation = useMutation({
@@ -83,7 +88,7 @@ export default function Settings() {
   if (isLoading) return null;
 
   return (
-    <div className="flex-1 overflow-hidden relative font-body text-white app-drag-region">
+    <div className="flex-1 overflow-hidden relative font-body text-white app-drag-region bg-black">
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
       </div>
@@ -101,7 +106,7 @@ export default function Settings() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 space-y-6"
+            className="bg-black/20 backdrop-blur-lg border border-white/5 rounded-3xl p-8 space-y-6"
           >
             <h2 className="text-xl font-semibold">
               Telegram
@@ -146,7 +151,7 @@ export default function Settings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 space-y-6"
+            className="bg-black/20 backdrop-blur-lg border border-white/5 rounded-3xl p-8 space-y-6"
           >
             <h2 className="text-xl font-semibold">
               Chrome
