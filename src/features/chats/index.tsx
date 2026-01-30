@@ -65,6 +65,10 @@ export function Chats() {
 
   return (
     <>
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-to-br from-[#9d00ff]/10 to-[#6b00ff]/6 rounded-full blur-[100px]" />
+      </div>
+
       {/* ===== Top Heading ===== */}
       <Header>
         <Search />
