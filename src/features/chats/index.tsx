@@ -65,8 +65,8 @@ export function Chats() {
 
   return (
     <div className="flex-1 overflow-hidden relative font-body text-white bg-black w-full h-full">
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-gradient-to-br from-[#9d00ff]/10 to-[#6b00ff]/6 rounded-full blur-[100px]" />
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
       </div>
 
       {/* ===== Top Heading ===== */}
@@ -171,7 +171,7 @@ export function Chats() {
               )}
             >
               {/* Top Part */}
-              <div className='mb-1 flex flex-none justify-between bg-black/40 p-4 shadow-lg sm:rounded-t-md'>
+              <div className='mb-1 flex flex-none justify-between bg-black p-4 shadow-lg sm:rounded-t-md'>
                 {/* Left */}
                 <div className='flex gap-3'>
                   <Button
@@ -322,7 +322,7 @@ export function Chats() {
           ) : (
             <div
               className={cn(
-                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col justify-center rounded-md border bg-black/40 shadow-xs sm:static sm:z-auto sm:flex'
+                'absolute inset-0 start-full z-50 hidden w-full flex-1 flex-col justify-center rounded-md border bg-black shadow-xs sm:static sm:z-auto sm:flex'
               )}
             >
               <div className='flex flex-col items-center space-y-6'>
