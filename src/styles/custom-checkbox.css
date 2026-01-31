@@ -1,0 +1,42 @@
+/* From Uiverse.io by SelfMadeSystem */
+.container {
+  cursor: pointer;
+}
+
+.container input {
+  display: none;
+}
+
+.container svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease;
+  stroke-dasharray: 0 0 240 9999999;
+  stroke-dashoffset: 1;
+  scale: -1 1;
+  transform-origin: center;
+  animation: hi 0.5s;
+}
+
+.container input:checked ~ svg .path {
+  stroke-dasharray: 0 262 70 9999999;
+  transition-delay: 0s;
+  scale: 1 1;
+  animation: none;
+}
+
+@keyframes hi {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 1;
+  }
+}

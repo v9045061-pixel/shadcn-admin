@@ -13,10 +13,11 @@ import { Main } from '@/components/layout/main'
 import { TopNav } from '@/components/layout/top-nav'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
-import { ThemeSwitch } from '@/components/theme-switch'
+// ...existing code...
 import { Analytics } from './components/analytics'
-import { Overview } from './components/overview'
-import { RecentSales } from './components/recent-sales'
+// ...existing code...
+import { LaunchPanel } from '@/components/launch-panel'
+import { DailyTasksPanel } from '@/components/daily-tasks-panel'
 
 export function Dashboard() {
   return (
@@ -26,7 +27,7 @@ export function Dashboard() {
         <TopNav links={topNav} />
         <div className='ms-auto flex items-center space-x-4'>
           <Search />
-          <ThemeSwitch />
+          {/* ...existing code... */}
           <ConfigDrawer />
           <ProfileDropdown />
         </div>
@@ -41,18 +42,13 @@ export function Dashboard() {
         <Tabs
           orientation='vertical'
           defaultValue='overview'
+          // ...existing code...
           className='space-y-4'
         >
           <div className='w-full overflow-x-auto pb-2'>
-            <TabsList>
-              <TabsTrigger value='overview'>Overview</TabsTrigger>
-              <TabsTrigger value='analytics'>Analytics</TabsTrigger>
-              <TabsTrigger value='reports' disabled>
-                Reports
-              </TabsTrigger>
-              <TabsTrigger value='notifications' disabled>
-                Notifications
-              </TabsTrigger>
+            <TabsList className="flex gap-2 bg-black/60 border border-white/10 rounded-xl px-2 py-1 shadow-sm">
+              <TabsTrigger value='overview' className="px-4 py-2 rounded-lg text-white data-[state=active]:bg-primary/10 data-[state=active]:text-primary font-medium transition-all">Overview</TabsTrigger>
+              <TabsTrigger value='analytics' className="px-4 py-2 rounded-lg text-white data-[state=active]:bg-primary/10 data-[state=active]:text-primary font-medium transition-all">Analytics</TabsTrigger>
             </TabsList>
           </div>
           <TabsContent value='overview' className='space-y-4'>
@@ -160,23 +156,19 @@ export function Dashboard() {
               </Card>
             </div>
             <div className='grid grid-cols-1 gap-4 lg:grid-cols-7'>
-              <Card className='col-span-1 lg:col-span-4'>
+              <Card className="col-span-1 lg:col-span-4 bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-6 lg:p-8 overflow-hidden group">
                 <CardHeader>
-                  <CardTitle>Overview</CardTitle>
+                  <CardTitle className="text-2xl font-display font-bold text-white flex items-center gap-3">
+                    <span className="sr-only">Масовий запуск</span>
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className='ps-2'>
-                  <Overview />
+                <CardContent className="ps-2">
+                  <LaunchPanel />
                 </CardContent>
               </Card>
-              <Card className='col-span-1 lg:col-span-3'>
-                <CardHeader>
-                  <CardTitle>Recent Sales</CardTitle>
-                  <CardDescription>
-                    You made 265 sales this month.
-                  </CardDescription>
-                </CardHeader>
+              <Card className="col-span-1 lg:col-span-3 bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-6 flex flex-col h-full">
                 <CardContent>
-                  <RecentSales />
+                  <DailyTasksPanel />
                 </CardContent>
               </Card>
             </div>
@@ -192,26 +184,22 @@ export function Dashboard() {
 
 const topNav = [
   {
-    title: 'Overview',
-    href: 'dashboard/overview',
+    // ...existing code...
     isActive: true,
     disabled: false,
   },
   {
-    title: 'Customers',
-    href: 'dashboard/customers',
+    // ...existing code...
     isActive: false,
     disabled: true,
   },
   {
-    title: 'Products',
-    href: 'dashboard/products',
+    // ...existing code...
     isActive: false,
     disabled: true,
   },
   {
-    title: 'Settings',
-    href: 'dashboard/settings',
+    // ...existing code...
     isActive: false,
     disabled: true,
   },
